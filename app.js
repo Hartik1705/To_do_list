@@ -175,11 +175,8 @@ app.post("/delete", function(req,res){
         res.redirect("/");
 })
 
-let port = process.env.PORT;
-if(port == null || port == ""){
-    port = 3000;
-}
+const port = Process.env.PORT || 3000 ;
 
-app.listen(port, function(){ 
-    console.log("server is running on port 3000")
-})
+server.listen(port,()=>{  
+    console.log("server listening to port "+port);
+});

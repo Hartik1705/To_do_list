@@ -97,33 +97,6 @@ app.get("/", function(req, res){
     let day = today.toLocaleDateString("en-US", options);
 });
 
-//making a custom route using express
-
-// app.get('/:customListName', function(req,res){
-//    const customListName = (req.params.customListName);
-
- 
-
-//    List.findOne({name: customListName}, function(err, foundList){
-//             if(!err){
-//                 if(!foundList){
-//                     const list = new List({
-//                         name: customListName,
-//                         items: defaultItem
-//                        })
-
-//                        list.save();
-//                        res.redirect("/" + customListName)
-//                 }
-//                 else{
-//                   res.render("list", {kindOfDay: foundList.name, newListItems: foundList.items })
-//                 }
-//             }
-//    })
-  
- 
-// })
-
 
 app.post("/",function(req,res){
     const itemName = req.body.newItem;
@@ -137,23 +110,6 @@ app.post("/",function(req,res){
 
         firstItem.save();
 
-
-    // if(listName == "Today"){
-    //         firstItem.save();
-    //         res.redirect("/");
-    // }    
-    // else{
-    //         //searching for the list in the database
-    //         List.findOne({name: listName}, function(err,foundList){
-    //             foundList.items.push(firstItem);
-    //             foundList.save();
-    //             res.redirect("/" + listName);
-    //         })
-    // }
-
-
-
-    // items.push(item);
 
     res.redirect("/");
     
@@ -175,8 +131,8 @@ app.post("/delete", function(req,res){
         res.redirect("/");
 })
 
-const port = Process.env.PORT || 3000 ;
+const port = process.env.PORT || 3000 ;
 
-server.listen(port,()=>{  
+app.listen(port,()=>{  
     console.log("server listening to port "+port);
 });
